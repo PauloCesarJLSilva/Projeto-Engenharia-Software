@@ -1,6 +1,8 @@
 import 'package:controle_financeiro/widgets/botao.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets/lista.dart';
+
 class HomePage extends StatefulWidget {
 
   @override
@@ -54,6 +56,7 @@ String total = "VALOR";
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.4,
                   color: Colors.teal,
+                  child: Lista(),
                 )
               ],
             ),
