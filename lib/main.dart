@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homePage.dart';
+import 'home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,10 +13,9 @@ class MyApp extends StatelessWidget {
       title: "Controle Financeiro",
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        brightness: Brightness.dark,
         visualDensity: VisualDensity.adaptivePlatformDensity,        
       ),
-      home: HomePage(),     
+      home: HomePage(),
     );
   }
 }
