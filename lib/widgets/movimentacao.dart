@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Movimento extends StatefulWidget {
-  Movimento({required Key key, required this.rowNumber, required this.callback}) : super(key: key);
+class Movimentacao extends StatefulWidget {
+  Movimentacao({required Key key, required this.rowNumber, required this.callback}) : super(key: key);
 
   int rowNumber;
   Function callback;
 
   @override
-  _MovimentoState createState() => _MovimentoState();
+  _MovimentacaoState createState() => _MovimentacaoState();
 }
 
-class _MovimentoState extends State<Movimento> {
+class _MovimentacaoState extends State<Movimentacao> {
   @override
   Widget build(BuildContext context) {
     return Card(

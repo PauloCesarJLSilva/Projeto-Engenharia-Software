@@ -1,5 +1,4 @@
 import 'package:controle_financeiro/widgets/botao.dart';
-import 'package:controle_financeiro/widgets/movimento.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,21 +16,12 @@ String total = "VALOR";
     return Scaffold(
       backgroundColor: Colors.blue[900],
       body: Container(
+        alignment: Alignment.topCenter,
         color: Colors.white,
-        //height: MediaQuery.of(context).size.height,
-        height: 500,
+        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: <Widget>[
-            Row(
-              children: [
-                Container(
-                  height: 20,
-                  width: 100,
-                  color: Colors.white,
-                ),
-              ],
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -44,29 +34,52 @@ String total = "VALOR";
               ],
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ListView(
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Botao(
-                      icon: Icons.arrow_circle_up_rounded, 
-                      text: "Receita", 
-                      cor: Colors.green,
+                Container(
+                  height: 30,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  color: Colors.red,
+                  child: Text(
+                    "Valor Total R\$"+total,
+                    style: TextStyle(color: Colors.black, fontSize: 30),
                     ),
-                    Botao(
-                      icon: Icons.arrow_circle_down_rounded, 
-                      text: "Despesa", 
-                      cor: Colors.red,
-                    ),
-                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  color: Colors.teal,
                 )
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Botao(
+                  icon: Icons.arrow_circle_up_rounded, 
+                  text: "Receita", 
+                  cor: Colors.green,
+                ),
+                Botao(
+                  icon: Icons.arrow_circle_down_rounded, 
+                  text: "Despesa", 
+                  cor: Colors.red,
+                )
+              ]
+            ),
+            
           ]    
         ),
       ),
     );
   }
 }
+
+
+
 
