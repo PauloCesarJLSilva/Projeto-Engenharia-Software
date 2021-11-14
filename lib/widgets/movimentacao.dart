@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Movimentacao extends StatefulWidget {
-  Movimentacao({required Key key, required this.rowNumber, required this.callback}) : super(key: key);
+  Movimentacao({Key? key, required this.rowNumber, required this.callback}) : super(key: key);
 
   int rowNumber;
   Function callback;

@@ -1,7 +1,8 @@
 import 'package:controle_financeiro/widgets/botao.dart';
 import 'package:flutter/material.dart';
+import 'widgets/movimentacao.dart';
 
-import 'widgets/lista.dart';
+//import 'widgets/lista.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -12,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
 
 String total = "VALOR";
+int totalRow = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,18 @@ String total = "VALOR";
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.4,
                   color: Colors.teal,
-                  child: Lista(),
+                  child: ListView(
+                    padding: EdgeInsets.all(2),
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      for (int i = 0; i < totalRow; ++i)
+                      Movimentacao(
+                        rowNumber: i,
+                        callback: (){},
+                        )
+                    ]
+                  ),
                 )
               ],
             ),
@@ -67,20 +80,28 @@ String total = "VALOR";
                   icon: Icons.arrow_circle_up_rounded, 
                   text: "Receita", 
                   cor: Colors.green,
+                  onPressed: _addRow,
                 ),
                 Botao(
                   icon: Icons.arrow_circle_down_rounded, 
                   text: "Despesa", 
                   cor: Colors.red,
+                  //onPressed: _Receta,               
                 )
               ]
-            ),
-            
+            ),           
           ]    
         ),
       ),
     );
   }
+
+  void _addRow() {
+    setState(() {
+      totalRow += 1;
+    });
+  }
+
 }
 
 

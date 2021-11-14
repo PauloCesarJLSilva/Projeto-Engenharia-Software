@@ -6,7 +6,9 @@ class Botao extends StatelessWidget {
   final String text;
   final Color cor;
 
-  const Botao({ Key? key, required this.icon, required this.text, required this.cor }) : super(key: key);
+  const Botao({ Key? key, required this.icon, required this.text, required this.cor, onPressed }) : super(key: key);
+
+  get onPressed => null;
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,12 @@ class Botao extends StatelessWidget {
                 SizedBox(width: 10,),
                 Text(text, style: TextStyle(
                   fontSize: 15)
-                  ),
+                ),
               ]
             ),
-
           ],
         ),
-        onPressed: (){},
+        onPressed: onPressed,
       ),
     );
   }
