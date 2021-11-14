@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Movimentacao extends StatefulWidget {
-  Movimentacao({Key? key, required this.rowNumber, required this.callback}) : super(key: key);
+  Movimentacao({Key? key,required this.rowNumber, required this.callback}) : super(key: key);
 
   int rowNumber;
   Function callback;
@@ -15,20 +15,11 @@ class _MovimentacaoState extends State<Movimentacao> {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(3.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Text(
-                "${widget.rowNumber + 1}.",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            Icon(Icons.sticky_note_2_outlined),
             Expanded(
               child: TextField(
                 onChanged: (text) {
@@ -36,7 +27,7 @@ class _MovimentacaoState extends State<Movimentacao> {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Category',
+                  labelText: 'Descrição',
                 ),
               ),
             ),
@@ -48,7 +39,7 @@ class _MovimentacaoState extends State<Movimentacao> {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Cost',
+                  labelText: 'Valor',
                 ),
               ),
             ),

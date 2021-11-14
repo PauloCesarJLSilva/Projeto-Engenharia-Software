@@ -2,8 +2,6 @@ import 'package:controle_financeiro/widgets/botao.dart';
 import 'package:flutter/material.dart';
 import 'widgets/movimentacao.dart';
 
-//import 'widgets/lista.dart';
-
 class HomePage extends StatefulWidget {
 
   @override
@@ -12,7 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
 
-String total = "VALOR";
+String total = "0";
 int totalRow = 0;
 
   @override
@@ -26,6 +24,7 @@ int totalRow = 0;
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: <Widget>[
+            Row(children: [SizedBox(height: 20,)],),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -41,11 +40,13 @@ int totalRow = 0;
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  
                   height: 30,
                   width: MediaQuery.of(context).size.width * 0.7,
                   color: Colors.red,
+                  alignment: Alignment.center,
                   child: Text(
-                    "Valor Total R\$"+total,
+                    "Total R\$"+total,
                     style: TextStyle(color: Colors.black, fontSize: 30),
                     ),
                 ),
@@ -55,8 +56,8 @@ int totalRow = 0;
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.60,
                   color: Colors.teal,
                   child: ListView(
                     padding: EdgeInsets.all(2),
@@ -77,16 +78,16 @@ int totalRow = 0;
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Botao(
-                  icon: Icons.arrow_circle_up_rounded, 
+                  icon: Icons.north_east_rounded, 
                   text: "Receita", 
                   cor: Colors.green,
                   onPressed: _addRow,
                 ),
                 Botao(
-                  icon: Icons.arrow_circle_down_rounded, 
+                  icon: Icons.south_west_rounded, 
                   text: "Despesa", 
                   cor: Colors.red,
-                  //onPressed: _Receta,               
+                  onPressed: _addRow,               
                 )
               ]
             ),           
