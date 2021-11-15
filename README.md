@@ -4,5 +4,5 @@ Projeto da disciplina de Egenharia de Software.
 
 ## Prof. Danilo Ruy Gomes
 
-Desenvolvimento de um app baseado nos conhecimentos adquiridos em sala de aula. 
+Desenvolvimento de um app (Dart) baseado nos conhecimentos adquiridos em sala de aula. 
 
