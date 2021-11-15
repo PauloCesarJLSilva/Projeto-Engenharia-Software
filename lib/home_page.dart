@@ -12,6 +12,7 @@ class _HomePage extends State<HomePage> {
 
 String total = "0";
 int totalRow = 0;
+List<double> valorLinha = [];
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +68,7 @@ int totalRow = 0;
                       for (int i = 0; i < totalRow; ++i)
                       Movimentacao(
                         rowNumber: i,
-                        callback: (){},
+                        callback: _atualizaValorLinha,
                         )
                     ]
                   ),
@@ -100,7 +101,32 @@ int totalRow = 0;
   void _addRow() {
     setState(() {
       totalRow += 1;
+      valorLinha.add(0);
     });
+  }
+
+  void _atualizaTotal() {
+    setState(() {
+      double somaTotal = valorLinha.length > 0
+          ? valorLinha.reduce((value, element) => value + element)
+          : 0;
+
+      if (somaTotal > 0.0) {
+        total = somaTotal.toString();
+      } else {
+        total = total;
+      }
+    });
+  }
+
+  void _atualizaValorLinha(int rowNum, double newVal) {
+    print("Row $rowNum - newVal $newVal");
+    setState(() {
+      if (valorLinha.length > rowNum) {
+        valorLinha[rowNum] = newVal;
+      }
+    });
+    _atualizaTotal();
   }
 
 }
