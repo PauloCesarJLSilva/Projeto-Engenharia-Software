@@ -18,7 +18,7 @@ class _MovimentacaoState extends State<Movimentacao> {
     return Card(
       //color: Colors.yellow,
       child: Padding(
-        padding: const EdgeInsets.all(3.0),
+        padding: const EdgeInsets.all(1.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,7 +34,7 @@ class _MovimentacaoState extends State<Movimentacao> {
                 ),
               ),
             ),
-            Icon(Icons.attach_money),
+            Text("R\$"),
             Expanded(
               child: TextField(
                 inputFormatters: [
