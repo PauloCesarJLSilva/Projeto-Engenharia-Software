@@ -19,7 +19,7 @@ class _ReceitaState extends State<Receita> {
     return Card(
       color: Colors.green[200],
       child: Padding(
-        padding: const EdgeInsets.all(1.0),
+        padding: const EdgeInsets.all(0.5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
 
 String totalReceita = "0";
-String totalDepesa = "0";
+String totalDespesa = "0";
 int totalRowReceita = 0;
 int totalRowDespesa = 0;
 List<double> valorLinhaReceita = [];
@@ -60,7 +60,7 @@ List<double> valorLinhaDespesa = [];
                   color: Colors.white38,
                   alignment: Alignment.center,
                   child: Text(
-                    "Despesa R\$"+totalReceita,
+                    "Despesa R\$"+totalDespesa,
                     style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                 ),
@@ -82,7 +82,7 @@ List<double> valorLinhaDespesa = [];
                       for (int i = 0; i < totalRowReceita; ++i)
                       Receita(
                         rowNumber: i,
-                        callback: _atualizaValorLinha,
+                        callback: _atualizaValorLinhaReceita,
                         )
                     ]
                   ),
@@ -96,10 +96,10 @@ List<double> valorLinhaDespesa = [];
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     children: <Widget>[
-                      for (int i = 0; i < totalRowReceita; ++i)
+                      for (int i = 0; i < totalRowDespesa; ++i)
                       Despesa(
                         rowNumber: i,
-                        callback: _atualizaValorLinha,
+                        callback: _atualizaValorLinhaDespesa,
                         )
                     ]
                   ),
@@ -114,7 +114,7 @@ List<double> valorLinhaDespesa = [];
                   icon: Icons.north_east_rounded, 
                   text: "Receita", 
                   cor: Colors.green,
-                  onPressed: _addRow,
+                  onPressed: _addRowReceita,
                 ),
                 Botao(
                   icon: Icons.delete, 
@@ -126,10 +126,10 @@ List<double> valorLinhaDespesa = [];
                   icon: Icons.south_west_rounded, 
                   text: "Despesa", 
                   cor: Colors.red,
-                  onPressed: _addRow,               
-                )
+                  onPressed: _addRowDespesa,               
+                ),
                 Botao(
-                  icon: Icons.delete,
+                  icon: Icons.delete, 
                   text: "Apagar", 
                   cor: Colors.blue,
                   onPressed: deletaLinhaDespesa,
@@ -142,14 +142,21 @@ List<double> valorLinhaDespesa = [];
     );
   }
 
-  void _addRow() {
+  void _addRowReceita() {
     setState(() {
       totalRowReceita += 1;
       valorLinhaReceita.add(0);
     });
   }
 
-  void _atualizaTotal() {
+  void _addRowDespesa() {
+    setState(() {
+      totalRowDespesa += 1;
+      valorLinhaDespesa.add(0);
+    });
+  }
+
+  void _atualizaTotalReceita() {
     setState(() {
       double somaTotal = valorLinhaReceita.length > 0
           ? valorLinhaReceita.reduce((value, element) => value + element)
@@ -163,13 +170,36 @@ List<double> valorLinhaDespesa = [];
     });
   }
 
-  void _atualizaValorLinha(int rowNum, double newVal) {
+  void _atualizaTotalDespesa() {
+    setState(() {
+      double somaTotal = valorLinhaDespesa.length > 0
+          ? valorLinhaDespesa.reduce((value, element) => value + element)
+          : 0;
+
+      if (somaTotal > 0.0) {
+        totalDespesa = somaTotal.toString();
+      } else {
+        totalDespesa = "0";
+      }
+    });
+  }  
+
+  void _atualizaValorLinhaReceita(int rowNum, double newVal) {
     setState(() {
       if (valorLinhaReceita.length > rowNum) {
         valorLinhaReceita[rowNum] = newVal;
       }
     });
-    _atualizaTotal();
+    _atualizaTotalReceita();
+  }
+
+  void _atualizaValorLinhaDespesa(int rowNum, double newVal) {
+    setState(() {
+      if (valorLinhaDespesa.length > rowNum) {
+        valorLinhaDespesa[rowNum] = newVal;
+      }
+    });
+    _atualizaTotalDespesa();
   }
 
   void deletaLinhaReceita() {
@@ -181,7 +211,19 @@ List<double> valorLinhaDespesa = [];
       }
     });
 
-    _atualizaTotal();
+    _atualizaTotalReceita();
+  }
+
+  void deletaLinhaDespesa() {
+    setState(() {
+      int newTotalRow = totalRowDespesa - 1;
+      totalRowDespesa = newTotalRow < 0 ? 0 : newTotalRow;
+      if (valorLinhaDespesa.isNotEmpty) {
+        valorLinhaDespesa.removeLast();
+      }
+    });
+
+    _atualizaTotalDespesa();
   }
 
 }
