@@ -40,10 +40,9 @@ List<double> valorLinha = [];
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  
-                  height: 30,
-                  width: MediaQuery.of(context).size.width * 0.7,
+                Container(                  
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   color: Colors.red,
                   alignment: Alignment.center,
                   child: Text(
@@ -54,7 +53,6 @@ List<double> valorLinha = [];
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -83,6 +81,12 @@ List<double> valorLinha = [];
                   text: "Receita", 
                   cor: Colors.green,
                   onPressed: _addRow,
+                ),
+                Botao(
+                  icon: Icons.delete, 
+                  text: "Apagar", 
+                  cor: Colors.blue,
+                  onPressed: deletaLinha,
                 ),
                 Botao(
                   icon: Icons.south_west_rounded, 
@@ -114,18 +118,29 @@ List<double> valorLinha = [];
       if (somaTotal > 0.0) {
         total = somaTotal.toString();
       } else {
-        total = total;
+        total = "0";
       }
     });
   }
 
   void _atualizaValorLinha(int rowNum, double newVal) {
-    print("Row $rowNum - newVal $newVal");
     setState(() {
       if (valorLinha.length > rowNum) {
         valorLinha[rowNum] = newVal;
       }
     });
+    _atualizaTotal();
+  }
+
+  void deletaLinha() {
+    setState(() {
+      int newTotalRow = totalRow - 1;
+      totalRow = newTotalRow < 0 ? 0 : newTotalRow;
+      if (valorLinha.isNotEmpty) {
+        valorLinha.removeLast();
+      }
+    });
+
     _atualizaTotal();
   }
 

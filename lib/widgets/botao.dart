@@ -14,7 +14,7 @@ class Botao extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
+      height: 30,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: cor,

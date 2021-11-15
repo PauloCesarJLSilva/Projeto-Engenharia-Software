@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Controle Financeiro",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,        
       ),
       home: HomePage(),
