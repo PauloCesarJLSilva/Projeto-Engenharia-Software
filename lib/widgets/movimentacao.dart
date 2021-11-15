@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Movimentacao extends StatefulWidget {
   Movimentacao({Key? key,required this.rowNumber, required this.callback}) : super(key: key);
@@ -34,8 +35,18 @@ class _MovimentacaoState extends State<Movimentacao> {
             Icon(Icons.attach_money),
             Expanded(
               child: TextField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'[0-9]+(\.){0,1}[0-9]*'))
+                ],
                 onChanged: (text) {
-                  print(text);
+                  double val = 0.0;
+                  try {
+                    val = double.parse(text);
+                  } catch (e) {
+                    print("text is not convertible to double");
+                  }
+                  widget.callback(widget.rowNumber, val);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
