@@ -2,27 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // ignore: must_be_immutable
-class Movimentacao extends StatefulWidget {
-  Movimentacao({Key? key,required this.rowNumber, required this.callback}) : super(key: key);
+class Despesa extends StatefulWidget {
+  Despesa({Key? key,required this.rowNumber, required this.callback}) : super(key: key);
 
   int rowNumber;
   Function callback;
 
   @override
-  _MovimentacaoState createState() => _MovimentacaoState();
+  _DespesaState createState() => _DespesaState();
 }
 
-class _MovimentacaoState extends State<Movimentacao> {
+class _DespesaState extends State<Despesa> {
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      //color: Colors.yellow,
+      color: Colors.red[200],
       child: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.sticky_note_2_outlined),
+            Icon(Icons.south_east_rounded),
             Expanded(
               child: TextField(
                 onChanged: (text) {
@@ -46,7 +47,6 @@ class _MovimentacaoState extends State<Movimentacao> {
                   try {
                     val = double.parse(text);
                   } catch (e) {
-                    print("text is not convertible to double");
                   }
                   widget.callback(widget.rowNumber, val);
                 },

@@ -1,6 +1,7 @@
 import 'package:controle_financeiro/widgets/botao.dart';
 import 'package:flutter/material.dart';
-import 'widgets/movimentacao.dart';
+import 'widgets/despesa.dart';
+import 'widgets/receita.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -10,9 +11,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
 
-String total = "0";
-int totalRow = 0;
-List<double> valorLinha = [];
+String totalReceita = "0";
+String totalDepesa = "0";
+int totalRowReceita = 0;
+int totalRowDespesa = 0;
+List<double> valorLinhaReceita = [];
+List<double> valorLinhaDespesa = [];
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +42,36 @@ List<double> valorLinha = [];
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(                  
                   height: 40,
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.3,
                   color: Colors.white38,
                   alignment: Alignment.center,
                   child: Text(
-                    "Total R\$"+total,
-                    style: TextStyle(color: Colors.white, fontSize: 30),
+                    "Receita R\$"+totalReceita,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                ),
+                Container(                  
+                  height: 40,
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  color: Colors.white38,
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Despesa R\$"+totalReceita,
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                 ),
               ],
             ),
             Row(children: [SizedBox(height: 10,)],),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.89,
+                  width: MediaQuery.of(context).size.width * 0.45,
                   height: MediaQuery.of(context).size.height * 0.5,
                   color: Colors.white10,
                   child: ListView(
@@ -65,8 +79,25 @@ List<double> valorLinha = [];
                     physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     children: <Widget>[
-                      for (int i = 0; i < totalRow; ++i)
-                      Movimentacao(
+                      for (int i = 0; i < totalRowReceita; ++i)
+                      Receita(
+                        rowNumber: i,
+                        callback: _atualizaValorLinha,
+                        )
+                    ]
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.45,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  color: Colors.white10,
+                  child: ListView(
+                    padding: EdgeInsets.all(2),
+                    physics: BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      for (int i = 0; i < totalRowReceita; ++i)
+                      Despesa(
                         rowNumber: i,
                         callback: _atualizaValorLinha,
                         )
@@ -89,7 +120,7 @@ List<double> valorLinha = [];
                   icon: Icons.delete, 
                   text: "Apagar", 
                   cor: Colors.blue,
-                  onPressed: deletaLinha,
+                  onPressed: deletaLinhaReceita,
                 ),
                 Botao(
                   icon: Icons.south_west_rounded, 
@@ -97,6 +128,12 @@ List<double> valorLinha = [];
                   cor: Colors.red,
                   onPressed: _addRow,               
                 )
+                Botao(
+                  icon: Icons.delete,
+                  text: "Apagar", 
+                  cor: Colors.blue,
+                  onPressed: deletaLinhaDespesa,
+                ),
               ]
             ),           
           ]    
@@ -107,40 +144,40 @@ List<double> valorLinha = [];
 
   void _addRow() {
     setState(() {
-      totalRow += 1;
-      valorLinha.add(0);
+      totalRowReceita += 1;
+      valorLinhaReceita.add(0);
     });
   }
 
   void _atualizaTotal() {
     setState(() {
-      double somaTotal = valorLinha.length > 0
-          ? valorLinha.reduce((value, element) => value + element)
+      double somaTotal = valorLinhaReceita.length > 0
+          ? valorLinhaReceita.reduce((value, element) => value + element)
           : 0;
 
       if (somaTotal > 0.0) {
-        total = somaTotal.toString();
+        totalReceita = somaTotal.toString();
       } else {
-        total = "0";
+        totalReceita = "0";
       }
     });
   }
 
   void _atualizaValorLinha(int rowNum, double newVal) {
     setState(() {
-      if (valorLinha.length > rowNum) {
-        valorLinha[rowNum] = newVal;
+      if (valorLinhaReceita.length > rowNum) {
+        valorLinhaReceita[rowNum] = newVal;
       }
     });
     _atualizaTotal();
   }
 
-  void deletaLinha() {
+  void deletaLinhaReceita() {
     setState(() {
-      int newTotalRow = totalRow - 1;
-      totalRow = newTotalRow < 0 ? 0 : newTotalRow;
-      if (valorLinha.isNotEmpty) {
-        valorLinha.removeLast();
+      int newTotalRow = totalRowReceita - 1;
+      totalRowReceita = newTotalRow < 0 ? 0 : newTotalRow;
+      if (valorLinhaReceita.isNotEmpty) {
+        valorLinhaReceita.removeLast();
       }
     });
 
