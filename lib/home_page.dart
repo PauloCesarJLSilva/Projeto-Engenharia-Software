@@ -20,7 +20,7 @@ List<double> valorLinha = [];
       backgroundColor: Colors.blue[900],
       body: Container(
         alignment: Alignment.topCenter,
-        color: Colors.white,
+        color: Colors.blue[900],
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -43,21 +43,23 @@ List<double> valorLinha = [];
                 Container(                  
                   height: 40,
                   width: MediaQuery.of(context).size.width * 0.5,
-                  color: Colors.red,
+                  color: Colors.white38,
                   alignment: Alignment.center,
                   child: Text(
                     "Total R\$"+total,
-                    style: TextStyle(color: Colors.black, fontSize: 30),
+                    style: TextStyle(color: Colors.white, fontSize: 30),
                     ),
                 ),
               ],
             ),
+            Row(children: [SizedBox(height: 10,)],),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.60,
-                  color: Colors.teal,
+                  width: MediaQuery.of(context).size.width * 0.89,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  color: Colors.white10,
                   child: ListView(
                     padding: EdgeInsets.all(2),
                     physics: BouncingScrollPhysics(),
@@ -73,6 +75,7 @@ List<double> valorLinha = [];
                 )
               ],
             ),
+            Row(children: [SizedBox(height: 20,)],),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
