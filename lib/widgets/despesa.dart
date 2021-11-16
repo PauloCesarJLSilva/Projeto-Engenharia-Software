@@ -32,6 +32,7 @@ class _DespesaState extends State<Despesa> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Descrição',
+                  labelStyle: TextStyle(fontSize: 13),
                 ),
               ),
             ),
@@ -53,6 +54,7 @@ class _DespesaState extends State<Despesa> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Valor',
+                  labelStyle: TextStyle(fontSize: 13),
                 ),
               ),
             ),
