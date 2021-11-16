@@ -23,7 +23,7 @@ class _DespesaState extends State<Despesa> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.south_east_rounded),
+            Icon(Icons.south_west_rounded),
             Expanded(
               child: TextField(
                 onChanged: (text) {

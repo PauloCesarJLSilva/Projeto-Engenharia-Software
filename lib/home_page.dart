@@ -46,7 +46,7 @@ List<double> valorLinhaDespesa = [];
               children: [
                 Container(                  
                   height: 40,
-                  width: MediaQuery.of(context).size.width * 0.3,
+                  width: MediaQuery.of(context).size.width * 0.4,
                   color: Colors.white38,
                   alignment: Alignment.center,
                   child: Text(
@@ -56,7 +56,7 @@ List<double> valorLinhaDespesa = [];
                 ),
                 Container(                  
                   height: 40,
-                  width: MediaQuery.of(context).size.width * 0.3,
+                  width: MediaQuery.of(context).size.width * 0.4,
                   color: Colors.white38,
                   alignment: Alignment.center,
                   child: Text(
