@@ -22,121 +22,129 @@ List<double> valorLinhaDespesa = [];
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[900],
-      body: Container(
-        alignment: Alignment.topCenter,
-        color: Colors.blue[900],
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: <Widget>[
-            Row(children: [SizedBox(height: 20,)],),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  child:Image.asset('assets/images/fatec.png',
-                  height: 150,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(                  
-                  height: 40,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  color: Colors.white38,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Receita R\$"+totalReceita,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.topCenter,
+          color: Colors.blue[900],
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: <Widget>[
+              Row(children: [SizedBox(height: 20,)],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child:Image.asset('assets/images/fatec.png',
+                    height: 150,
                     ),
-                ),
-                Container(                  
-                  height: 40,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  color: Colors.white38,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Despesa R\$"+totalDespesa,
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(                  
+                    height: 40,
+                    width: 150,
+                    color: Colors.white38,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Receita R\$"+totalReceita,
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                  ),
+                  Container(                  
+                    height: 40,
+                    width: 150,
+                    color: Colors.white38,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Despesa R\$"+totalDespesa,
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                  ),
+                ],
+              ),
+              Row(children: [SizedBox(height: 10,)],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.48,
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    color: Colors.white10,
+                    child: ListView(
+                      padding: EdgeInsets.all(2),
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        for (int i = 0; i < totalRowReceita; ++i)
+                        Receita(
+                          rowNumber: i,
+                          callback: _atualizaValorLinhaReceita,
+                          )
+                      ]
                     ),
-                ),
-              ],
-            ),
-            Row(children: [SizedBox(height: 10,)],),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  color: Colors.white10,
-                  child: ListView(
-                    padding: EdgeInsets.all(2),
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      for (int i = 0; i < totalRowReceita; ++i)
-                      Receita(
-                        rowNumber: i,
-                        callback: _atualizaValorLinhaReceita,
-                        )
-                    ]
                   ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.45,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  color: Colors.white10,
-                  child: ListView(
-                    padding: EdgeInsets.all(2),
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      for (int i = 0; i < totalRowDespesa; ++i)
-                      Despesa(
-                        rowNumber: i,
-                        callback: _atualizaValorLinhaDespesa,
-                        )
-                    ]
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.48,
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    color: Colors.white10,
+                    child: ListView(
+                      padding: EdgeInsets.all(2),
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      children: <Widget>[
+                        for (int i = 0; i < totalRowDespesa; ++i)
+                        Despesa(
+                          rowNumber: i,
+                          callback: _atualizaValorLinhaDespesa,
+                          )
+                      ]
+                    ),
+                  )
+                ],
+              ),
+              Row(children: [SizedBox(height: 20,)],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Botao(
+                    icon: Icons.north_east_rounded, 
+                    text: "Receita", 
+                    cor: Colors.green,
+                    onPressed: _addRowReceita,
+                  ),              
+                  Botao(
+                    icon: Icons.south_west_rounded, 
+                    text: "Despesa", 
+                    cor: Colors.red,
+                    onPressed: _addRowDespesa,               
                   ),
-                )
-              ],
-            ),
-            Row(children: [SizedBox(height: 20,)],),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Botao(
-                  icon: Icons.north_east_rounded, 
-                  text: "Receita", 
-                  cor: Colors.green,
-                  onPressed: _addRowReceita,
-                ),
-                Botao(
-                  icon: Icons.delete, 
-                  text: "Apagar", 
-                  cor: Colors.blue,
-                  onPressed: deletaLinhaReceita,
-                ),
-                Botao(
-                  icon: Icons.south_west_rounded, 
-                  text: "Despesa", 
-                  cor: Colors.red,
-                  onPressed: _addRowDespesa,               
-                ),
-                Botao(
-                  icon: Icons.delete, 
-                  text: "Apagar", 
-                  cor: Colors.blue,
-                  onPressed: deletaLinhaDespesa,
-                ),
-              ]
-            ),           
-          ]    
+                ]
+              ),
+              Row(children: [SizedBox(height: 10,)],),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Botao(
+                    icon: Icons.delete, 
+                    text: "Apagar", 
+                    cor: Colors.blue,
+                    onPressed: deletaLinhaReceita,
+                  ),
+                  Botao(
+                    icon: Icons.delete, 
+                    text: "Apagar", 
+                    cor: Colors.blue,
+                    onPressed: deletaLinhaDespesa,
+                  )       
+                ]
+              ),           
+            ]    
+          ),
         ),
       ),
     );

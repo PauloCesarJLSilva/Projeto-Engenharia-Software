@@ -25,7 +25,7 @@ class Botao extends StatelessWidget {
             Row(
               children: <Widget>[
                 Icon(icon),
-                SizedBox(width: 4,),
+                SizedBox(width: 40,),
                 Text(text, style: TextStyle(
                   fontSize: 15)
                 ),
