@@ -27,6 +27,7 @@ class _ReceitaState extends State<Receita> {
             children: [
               Expanded(
                 child: TextField(
+                  style: TextStyle(fontSize: 11),
                   onChanged: (text) {
                     print(text);
                   },
@@ -40,6 +41,7 @@ class _ReceitaState extends State<Receita> {
               Text("R\$"),
               Expanded(
                 child: TextField(
+                  style: TextStyle(fontSize: 10),
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
                         RegExp(r'[0-9]+(\.){0,1}[0-9]*'))
@@ -55,7 +57,7 @@ class _ReceitaState extends State<Receita> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Valor',
-                    labelStyle: TextStyle(fontSize: 10),
+                    labelStyle: TextStyle(fontSize: 11),
                   ),
                 ),
               ),

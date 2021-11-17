@@ -18,6 +18,7 @@ class _DespesaState extends State<Despesa> {
   Widget build(BuildContext context) {
     return Container(
       height: 35,
+      width: MediaQuery.of(context).size.height,
       child: Card(
         color: Colors.red[200],
         child: Padding(
@@ -27,6 +28,7 @@ class _DespesaState extends State<Despesa> {
             children: [
               Expanded(
                 child: TextField(
+                  style: TextStyle(fontSize: 11),
                   onChanged: (text) {
                     print(text);
                   },
@@ -40,6 +42,7 @@ class _DespesaState extends State<Despesa> {
               Text("R\$"),
               Expanded(
                 child: TextField(
+                  style: TextStyle(fontSize: 11),
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
                         RegExp(r'[0-9]+(\.){0,1}[0-9]*'))

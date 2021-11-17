@@ -47,7 +47,7 @@ List<double> valorLinhaDespesa = [];
                 children: [
                   Container(                  
                     height: 40,
-                    width: 150,
+                    width: MediaQuery.of(context).size.width * 0.48,
                     color: Colors.white38,
                     alignment: Alignment.center,
                     child: Text(
@@ -57,7 +57,7 @@ List<double> valorLinhaDespesa = [];
                   ),
                   Container(                  
                     height: 40,
-                    width: 150,
+                    width: MediaQuery.of(context).size.width * 0.48,
                     color: Colors.white38,
                     alignment: Alignment.center,
                     child: Text(
@@ -76,7 +76,7 @@ List<double> valorLinhaDespesa = [];
                     height: MediaQuery.of(context).size.height * 0.5,
                     color: Colors.white10,
                     child: ListView(
-                      padding: EdgeInsets.all(2),
+                      padding: EdgeInsets.all(0.1),
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       children: <Widget>[
@@ -93,7 +93,7 @@ List<double> valorLinhaDespesa = [];
                     height: MediaQuery.of(context).size.height * 0.5,
                     color: Colors.white10,
                     child: ListView(
-                      padding: EdgeInsets.all(2),
+                      padding: EdgeInsets.all(0.1),
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       children: <Widget>[
