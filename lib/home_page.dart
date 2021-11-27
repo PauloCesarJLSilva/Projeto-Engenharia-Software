@@ -171,7 +171,7 @@ List<double> valorLinhaDespesa = [];
           : 0;
 
       if (somaTotal > 0.0) {
-        totalReceita = somaTotal.toString();
+        totalReceita = somaTotal.toStringAsFixed(2);
       } else {
         totalReceita = "0";
       }
@@ -185,7 +185,7 @@ List<double> valorLinhaDespesa = [];
           : 0;
 
       if (somaTotal > 0.0) {
-        totalDespesa = somaTotal.toString();
+        totalDespesa = somaTotal.toStringAsFixed(2);
       } else {
         totalDespesa = "0";
       }

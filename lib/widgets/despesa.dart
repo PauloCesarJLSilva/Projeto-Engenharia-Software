@@ -45,7 +45,7 @@ class _DespesaState extends State<Despesa> {
                   style: TextStyle(fontSize: 11),
                   inputFormatters: [
                     FilteringTextInputFormatter.allow(
-                        RegExp(r'[0-9]+(\.){0,1}[0-9]*'))
+                        RegExp(r'[0-2]+(\.){0,3}[0-9]*'))
                   ],
                   onChanged: (text) {
                     double val = 0.0;
