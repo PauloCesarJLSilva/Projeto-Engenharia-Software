@@ -28,6 +28,7 @@ class _ReceitaState extends State<Receita> {
               Expanded(
                 child: TextField(
                   style: TextStyle(fontSize: 11),
+                  keyboardType: TextInputType.text,
                   onChanged: (text) {
                     print(text);
                   },
@@ -42,10 +43,7 @@ class _ReceitaState extends State<Receita> {
               Expanded(
                 child: TextField(
                   style: TextStyle(fontSize: 10),
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(
-                        RegExp(r'[0-9]+(\.){0,1}[0-9]*'))
-                  ],
+                  keyboardType: TextInputType.number,
                   onChanged: (text) {
                     double val = 0.0;
                     try {

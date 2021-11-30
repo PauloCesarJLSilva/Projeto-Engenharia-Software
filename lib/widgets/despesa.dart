@@ -29,6 +29,7 @@ class _DespesaState extends State<Despesa> {
               Expanded(
                 child: TextField(
                   style: TextStyle(fontSize: 11),
+                  keyboardType: TextInputType.text,
                   onChanged: (text) {
                     print(text);
                   },
@@ -43,10 +44,7 @@ class _DespesaState extends State<Despesa> {
               Expanded(
                 child: TextField(
                   style: TextStyle(fontSize: 11),
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(
-                        RegExp(r'[0-2]+(\.){0,3}[0-9]*'))
-                  ],
+                  keyboardType: TextInputType.number,
                   onChanged: (text) {
                     double val = 0.0;
                     try {
