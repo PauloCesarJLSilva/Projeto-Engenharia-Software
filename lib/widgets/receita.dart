@@ -18,6 +18,7 @@ class _ReceitaState extends State<Receita> {
   Widget build(BuildContext context) {
     return Container(
       height: 35,
+      width: MediaQuery.of(context).size.height,
       child: Card(
         color: Colors.green[200],
         child: Padding(
@@ -42,7 +43,7 @@ class _ReceitaState extends State<Receita> {
               Text("R\$"),
               Expanded(
                 child: TextField(
-                  style: TextStyle(fontSize: 10),
+                  style: TextStyle(fontSize: 11),
                   keyboardType: TextInputType.number,
                   onChanged: (text) {
                     double val = 0.0;

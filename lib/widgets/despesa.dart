@@ -56,7 +56,7 @@ class _DespesaState extends State<Despesa> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Valor',
-                    labelStyle: TextStyle(fontSize: 10),
+                    labelStyle: TextStyle(fontSize: 11),
                   ),
                 ),
               ),

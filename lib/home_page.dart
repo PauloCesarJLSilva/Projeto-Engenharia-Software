@@ -11,8 +11,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePage extends State<HomePage> {
 
-String totalReceita = "0,00";
-String totalDespesa = "0,00";
+String totalReceita = "0.00";
+String totalDespesa = "0.00";
 int totalRowReceita = 0;
 int totalRowDespesa = 0;
 List<double> valorLinhaReceita = [];
@@ -173,7 +173,7 @@ List<double> valorLinhaDespesa = [];
       if (somaTotal > 0.0) {
         totalReceita = somaTotal.toStringAsFixed(2);
       } else {
-        totalReceita = "0.0";
+        totalReceita = "0.00";
       }
     });
   }
@@ -187,7 +187,7 @@ List<double> valorLinhaDespesa = [];
       if (somaTotal > 0.0) {
         totalDespesa = somaTotal.toStringAsFixed(2);
       } else {
-        totalDespesa = "0.0";
+        totalDespesa = "0.00";
       }
     });
   }  
